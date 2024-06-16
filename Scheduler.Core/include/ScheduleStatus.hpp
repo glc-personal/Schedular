@@ -6,7 +6,7 @@
  * Schedule Status Enum
  * ---------------------------------------------------------------------------------------------------- 
  */
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         enum class ScheduleStatus {

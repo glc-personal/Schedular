@@ -3,7 +3,7 @@
 
 #include "HalfHour.hpp"
 
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         struct Hour {

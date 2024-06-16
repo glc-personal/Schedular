@@ -1,6 +1,6 @@
 #include "EnumHelper.hpp"
 
-namespace Schedular {
+namespace Scheduler {
     namespace Utilities {
 
         /*
@@ -13,25 +13,25 @@ namespace Schedular {
          * ---------------------------------------------------------------------------------------- 
          */
         template <>
-        std::string EnumHelper::toString(Schedular::Core::UserStatus status) {
+        std::string EnumHelper::toString(Scheduler::Core::UserStatus status) {
             switch (status) {
                 /*
                  * -------------------------------------------------------------------------------- 
                  * User existance
                  * -------------------------------------------------------------------------------- 
                  */
-                case Schedular::Core::UserStatus::DoesNotExist:
+                case Scheduler::Core::UserStatus::DoesNotExist:
                     return "Does Not Exist";
-                case Schedular::Core::UserStatus::Exists:
+                case Scheduler::Core::UserStatus::Exists:
                     return "Exists";
                 /*
                  * -------------------------------------------------------------------------------- 
                  * User logged in status
                  * -------------------------------------------------------------------------------- 
                  */
-                case Schedular::Core::UserStatus::LoggedIn:
+                case Scheduler::Core::UserStatus::LoggedIn:
                     return "Logged-In";
-                case Schedular::Core::UserStatus::LoggedOut:
+                case Scheduler::Core::UserStatus::LoggedOut:
                     return "Logged-Out";
 
                 default:
@@ -49,11 +49,11 @@ namespace Schedular {
          * ---------------------------------------------------------------------------------------- 
          */
         template <>
-        std::string EnumHelper::toString(Schedular::Core::ScheduleStatus status) {
+        std::string EnumHelper::toString(Scheduler::Core::ScheduleStatus status) {
             switch (status) {
-                case Schedular::Core::ScheduleStatus::Selected:
+                case Scheduler::Core::ScheduleStatus::Selected:
                     return "Selected";
-                case Schedular::Core::ScheduleStatus::NotSelected:
+                case Scheduler::Core::ScheduleStatus::NotSelected:
                     return "Not Selected";
                 defualt:
                     return "Unknown";

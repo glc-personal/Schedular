@@ -6,19 +6,19 @@
 
 int main() 
 {
-    std::cout << "Schedular!" << std::endl;
+    std::cout << "Scheduler!" << std::endl;
     // Create a manager
-    Schedular::Core::Manager* manager = new Schedular::Core::Manager("Sandra", "Timpelton", 1);
+    Scheduler::Core::Manager* manager = new Scheduler::Core::Manager("Sandra", "Timpelton", 1);
 
     // Create an employee
-    Schedular::Core::Employee* employee = new Schedular::Core::Employee("Tom", "Villas", 2);
+    Scheduler::Core::Employee* employee = new Scheduler::Core::Employee("Tom", "Villas", 2);
 
     // Add the employee
     manager->addEmployee(*employee);
     delete employee;
 
     // Create a new emplyee
-    employee = new Schedular::Core::Employee("Barbra", "Thompson", 3);
+    employee = new Scheduler::Core::Employee("Barbra", "Thompson", 3);
 
     // Add the employee
     manager->addEmployee(*employee);
@@ -26,15 +26,15 @@ int main()
  
     // Show the manager's employees
     std::cout << "Manager: " << manager->getName() << std::endl;
-    for (const Schedular::Core::Employee& _ : manager->getEmployees()) {
-        std::cout << "\t" << _.getName() << ": " << Schedular::Utilities::EnumHelper::toString(_.getLoggedInStatus()) << std::endl;
+    for (const Scheduler::Core::Employee& _ : manager->getEmployees()) {
+        std::cout << "\t" << _.getName() << ": " << Scheduler::Utilities::EnumHelper::toString(_.getLoggedInStatus()) << std::endl;
     }
 
     // Remove an employee
     std::cout << "Manager: " << manager->getName() << std::endl;
-    if (manager->removeEmployee(2) == Schedular::Core::UserStatus::Exists) {
+    if (manager->removeEmployee(2) == Scheduler::Core::UserStatus::Exists) {
         std::cout << "Employee removed" << std::endl;
-        for (const Schedular::Core::Employee& _ : manager->getEmployees()) {
+        for (const Scheduler::Core::Employee& _ : manager->getEmployees()) {
             std::cout << "\t" << _.getName() << std::endl;
         }
     }

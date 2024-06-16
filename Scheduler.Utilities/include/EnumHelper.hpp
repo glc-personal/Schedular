@@ -10,7 +10,7 @@
  * Enum Helper 
  * ---------------------------------------------------------------------------------------------------- 
  */
-namespace Schedular {
+namespace Scheduler {
     namespace Utilities {
 
         class EnumHelper {
@@ -31,10 +31,10 @@ namespace Schedular {
          * --------------------------------------------------------------------------------------------
          */
         template <>
-        std::string EnumHelper::toString(Schedular::Core::UserStatus status);
+        std::string EnumHelper::toString(Scheduler::Core::UserStatus status);
 
         template <>
-        std::string EnumHelper::toString(Schedular::Core::ScheduleStatus status);
+        std::string EnumHelper::toString(Scheduler::Core::ScheduleStatus status);
     }
 }
 

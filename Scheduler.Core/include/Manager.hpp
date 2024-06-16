@@ -1,63 +1,61 @@
-#ifndef SCHEDULEBASE_H
-#define SCHEDULEBASE_H
+#ifndef MANAGER_H
+#define MANAGER_H
 
-#include "Day.hpp"
-#include "ScheduleStatus.hpp"
+#include "UserBase.hpp"
+#include "Employee.hpp"
+#include "UserStatus.hpp"
+#include <vector>
+#include <string>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * Schedule Base for different Schedule Types (AvailabilitySchedule, WorkSchedule, etc.)
+ * Manager user
  * ---------------------------------------------------------------------------------------------------- 
  */
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
-        class ScheduleBase {
+        class Manager : public UserBase {
         public:
             /*
              * ---------------------------------------------------------------------------------------- 
-             * ScheduleBase Constructor
+             * Manager Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleBase();
+            Manager(const std::string& first_name, const std::string& last_name, const int id);
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * ScheduleBase Deconstructor
+             * Manager Deconstructor
              * ---------------------------------------------------------------------------------------- 
              */
-            virtual ~ScheduleBase();
+            ~Manager();
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Get Methods
+             * Get methods
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleStatus getSubmissionStatus() const;
+            std::vector<Employee> getEmployees() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Set Methods
+             * Add methods
              * ---------------------------------------------------------------------------------------- 
              */
-            void setSubmissionStatus(ScheduleStatus status);
+            void addEmployee(Employee employee);
+
+           /*
+            * ---------------------------------------------------------------------------------------- 
+            * Remove methods
+            * ---------------------------------------------------------------------------------------- 
+            */
+           UserStatus removeEmployee(int id);
 
         private:
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * 
-             * ---------------------------------------------------------------------------------------- 
-             */
-            Day days[7];
-
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * Flags
-             * ---------------------------------------------------------------------------------------- 
-             */
-            ScheduleStatus submission_status;
+            std::vector<Employee> employees; // use a vector over a list because push_back is faster, adding to end of vector is faster
         };
     }
 }
 
-#endif // SCHEDULEBASE_H
+#endif // MANAGER_H

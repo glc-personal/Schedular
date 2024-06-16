@@ -1,6 +1,6 @@
 #include "ScheduleBase.hpp"
 
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         /*

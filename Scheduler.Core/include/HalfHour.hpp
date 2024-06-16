@@ -3,7 +3,7 @@
 
 #include "ScheduleStatus.hpp"
 
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         struct HalfHour {

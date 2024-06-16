@@ -2,13 +2,13 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++17 -I./Schedular.Core/include -I./Schedular.Utilities/include
+CXXFLAGS = -std=c++17 -I./Scheduler.Core/include -I./Scheduler.Utilities/include
 
 # Directories
-CORE_DIR = ./Schedular.Core
+CORE_DIR = ./Scheduler.Core
 CORE_SRC_DIR = $(CORE_DIR)/src
 CORE_INC_DIR = $(CORE_DIR)/include
-UTILITIES_DIR = ./Schedular.Utilities
+UTILITIES_DIR = ./Scheduler.Utilities
 UTILITIES_SRC_DIR = $(UTILITIES_DIR)/src
 UTILITIES_INC_DIR = $(UTILITIES_DIR)/include
 
@@ -23,7 +23,7 @@ UTILITIES_OBJECTS = $(UTILITIES_SOURCES:.cpp=.o)
 MAIN_OBJECT = $(MAIN_SOURCE:.cpp=.o)
 
 # Executable
-EXEC = Schedular
+EXEC = Scheduler
 
 # Build the executable
 all: $(EXEC)

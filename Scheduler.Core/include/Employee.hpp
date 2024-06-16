@@ -1,32 +1,38 @@
-#ifndef USERSTATUS_H
-#define USERSTATUS_H
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
+
+#include "UserBase.hpp"
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * User Status Enumeration
+ * Employee class
  * ---------------------------------------------------------------------------------------------------- 
  */
-namespace Schedular {
+
+namespace Scheduler {
     namespace Core {
 
-        enum class UserStatus {
-            /*
+        class Employee : public UserBase {
+        public:
+            /* 
              * ---------------------------------------------------------------------------------------- 
-             * User existance
+             * Employee Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            DoesNotExist,
-            Exists,
+            Employee(const std::string& first_name, 
+                const std::string& last_name,
+                const int id);
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Employee Deconstructor
+             * ---------------------------------------------------------------------------------------- 
+             */
+            ~Employee();
 
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * User logged in
-             * ---------------------------------------------------------------------------------------- 
-             */
-            LoggedIn,
-            LoggedOut,
+        
+        private:
         };
     }
 }
 
-#endif // USERSTATUS_H
+#endif // EMPLOYEE_H

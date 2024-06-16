@@ -9,7 +9,7 @@
  * User Base class to represent a user.
  * -------------------------------------------------------------------------------- 
  */
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         class UserBase {

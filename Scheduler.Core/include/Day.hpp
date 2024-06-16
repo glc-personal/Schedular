@@ -11,7 +11,7 @@
  * ---------------------------------------------------------------------------------------------------- 
  */
 
-namespace Schedular {
+namespace Scheduler {
     namespace Core {
 
         struct Day {
