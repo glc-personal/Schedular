@@ -1,0 +1,25 @@
+@startuml
+class Manager {
+    --Constructors--
+    +Manager(string first_name, string last_name, int id)
+    ----
+    --Deconstructor--
+    +~Manager()
+    ----
+    --Get Methods--
+    +getEmployees()
+    ----
+    --Add Methods--
+    +addEmployee(Employee employee)
+    ----
+    --Remove Methods--
+    +removeEmployee(int id)
+    ----
+    --Variables--
+    -vector<Employee> employees
+}
+
+'Relationships
+Manager -right-> Employee : uses
+Manager -down-> UserBase : " inherits"
+@enduml

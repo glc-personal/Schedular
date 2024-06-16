@@ -1,0 +1,10 @@
+@startuml
+class Employee {
+}
+
+class UserBase {
+}
+
+'Relationships
+Employee -down-> UserBase : inherits
+@enduml

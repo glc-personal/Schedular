@@ -1,0 +1,21 @@
+@startuml
+class UserBase {
+    ----
+    --Get Methods--
+    +string getFirstName()
+    +string getLastName()
+    +string getName()
+    +int getID()
+    ----
+    --Set Methods--
+    +setLoggedIn(bool is_logged_in)
+    ----
+    --Constant Parameters--
+    -string first_name
+    -string last_name
+    -int id
+    ----
+    --Flags--
+    -bool logged_in
+}
+@enduml

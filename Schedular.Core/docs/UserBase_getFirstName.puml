@@ -1,0 +1,10 @@
+@startuml
+actor User
+
+'Call
+User -> UserBase : getFirstName()
+
+|||
+
+UserBase -> User : first_name
+@enduml
