@@ -1,57 +1,47 @@
-#ifndef HOUR_H
-#define HOUR_H
+#ifndef QUARTERHOUR_H
+#define QUARTERHOUR_H
 
-#include "QuarterHour.hpp"
-
-/*
- * ---------------------------------------------------------------------------------------------------- 
- * Hour 
- *  Summary: Collection of four quarter hours.
- * ---------------------------------------------------------------------------------------------------- 
- */
+#include "ScheduleStatus.hpp"
 
 namespace Scheduler {
     namespace Core {
 
-        class Hour {
+        class QuarterHour {
         public:
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Variables
+             * Quarter Hour Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour quarters[4];
+            QuarterHour();
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Hour Constructor
+             * Quarter Hour Deconstructor
              * ---------------------------------------------------------------------------------------- 
              */
-            Hour();
+            ~QuarterHour();
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Hour Deconstructor
+             * Get methods
              * ---------------------------------------------------------------------------------------- 
              */
-            ~Hour();
+            ScheduleStatus getBookedStatus() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Get Methods
+             * Set methods
              * ---------------------------------------------------------------------------------------- 
              */
-            
-
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * Set Methods
-             * ---------------------------------------------------------------------------------------- 
-             */
+            void setBookedStatus(ScheduleStatus status);
+            void setAsBooked();
+            void setAsNotBooked();
 
         private:
+            ScheduleStatus booked_status;
         };
     }
 }
 
-#endif // HOUR_H
+#endif // QUARTERHOUR_H

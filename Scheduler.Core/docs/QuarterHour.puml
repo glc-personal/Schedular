@@ -1,0 +1,20 @@
+@startuml
+class QuarterHour {
+    --Constructor and Deconstructor--
+    +QuarterHour()
+    +~QuarterHour()
+    --Get Methods--
+    +ScheduleStatus getBookedStatus()    
+    --Set Methods--
+    +void setBookedStatus(ScheduleStatus status)
+    +void setAsBooked()
+    +void setAsNotBooked()
+    ----
+    -ScheduleStatus booked_status
+}
+
+enum ScheduleStatus
+
+' Relationships
+QuarterHour -right-> ScheduleStatus : uses
+@enduml

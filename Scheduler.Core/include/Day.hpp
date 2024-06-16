@@ -7,14 +7,16 @@
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * Day Structure
+ * Day 
+ *  Summary: Named collection of 24 hours.
  * ---------------------------------------------------------------------------------------------------- 
  */
 
 namespace Scheduler {
     namespace Core {
 
-        struct Day {
+        class Day {
+        public:
             std::string name; 
             Hour hours[24];
 
@@ -23,13 +25,15 @@ namespace Scheduler {
              * Day Constructors
              * ---------------------------------------------------------------------------------------- 
              */
-            Day() {}
-            Day(const std::string day_name) : name(day_name) {
-                for (int i = 0; i < 24; i++) {
-                    hours[i].first_half_hour.selected_status = ScheduleStatus::NotSelected;
-                    hours[i].second_half_hour.selected_status = ScheduleStatus::NotSelected;
-                }
-            }
+            Day();
+            Day(const std::string day_name);
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Day Deconstructors
+             * ---------------------------------------------------------------------------------------- 
+             */
+            ~Day();
         };
     }
 }

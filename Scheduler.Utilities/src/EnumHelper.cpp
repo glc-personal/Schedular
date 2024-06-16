@@ -51,10 +51,10 @@ namespace Scheduler {
         template <>
         std::string EnumHelper::toString(Scheduler::Core::ScheduleStatus status) {
             switch (status) {
-                case Scheduler::Core::ScheduleStatus::Selected:
-                    return "Selected";
-                case Scheduler::Core::ScheduleStatus::NotSelected:
-                    return "Not Selected";
+                case Scheduler::Core::ScheduleStatus::Booked:
+                    return "Booked";
+                case Scheduler::Core::ScheduleStatus::NotBooked:
+                    return "Not Booked";
                 defualt:
                     return "Unknown";
             }
