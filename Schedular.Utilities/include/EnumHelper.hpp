@@ -2,6 +2,7 @@
 #define ENUMHELPER_H
 
 #include "UserStatus.hpp"
+#include "ScheduleStatus.hpp"
 #include <string>
 
 /*
@@ -14,9 +15,26 @@ namespace Schedular {
 
         class EnumHelper {
         public:
-            static std::string toString(Schedular::Core::UserStatus status);
+            /*
+             * ----------------------------------------------------------------------------------------
+             * To String conversion
+             * ----------------------------------------------------------------------------------------
+             */
+            template<typename T>
+            static std::string toString(T enumValue);
         private:
         };
+
+        /*
+         * --------------------------------------------------------------------------------------------
+         * To String Methods
+         * --------------------------------------------------------------------------------------------
+         */
+        template <>
+        std::string EnumHelper::toString(Schedular::Core::UserStatus status);
+
+        template <>
+        std::string EnumHelper::toString(Schedular::Core::ScheduleStatus status);
     }
 }
 
