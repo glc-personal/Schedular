@@ -8,15 +8,9 @@ namespace Scheduler {
          * ScheduleBase Constructor
          * ----------------------------------------------------------------------------------------
          */
-        ScheduleBase::ScheduleBase() {
+        ScheduleBase::ScheduleBase(int n_days) {
             // Initialize the days of the week.
-            days[0] = Day("Monday");
-            days[1] = Day("Tuesday");
-            days[2] = Day("Wednesday");
-            days[3] = Day("Thursday");
-            days[4] = Day("Friday");
-            days[5] = Day("Saturday");
-            days[6] = Day("Sunday");
+            days = new Day[n_days];
         }
 
         /*
@@ -24,31 +18,33 @@ namespace Scheduler {
          * ScheduleBase Deconstructor
          * ----------------------------------------------------------------------------------------
          */
-        ScheduleBase::~ScheduleBase() {}
+        ScheduleBase::~ScheduleBase() {
+            delete[] days;
+        }
 
         /*
          * ----------------------------------------------------------------------------------------
-         * getSubmissionStatus
+         * GetSubmissionStatus
          *  Summary: Obtain the submission status of the Schedule
          *
          *  Input:
          *  Output: ScheduleStatus for the submission status.
          * ----------------------------------------------------------------------------------------
          */
-        ScheduleStatus ScheduleBase::getSubmissionStatus() const {
+        ScheduleStatus ScheduleBase::GetSubmissionStatus() const {
             return submission_status;
         }
 
         /*
          * ----------------------------------------------------------------------------------------
-         * setSubmissionStatus
+         * SetSubmissionStatus
          *  Summary: Set the submission status of the Schedule
          *
          *  Input: Submission status for the Schedule
          *  Output: 
          * ----------------------------------------------------------------------------------------
          */
-        void ScheduleBase::setSubmissionStatus(ScheduleStatus status) {
+        void ScheduleBase::SetSubmissionStatus(ScheduleStatus status) {
             submission_status = status;
         }
     }

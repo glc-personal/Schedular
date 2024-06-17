@@ -1,5 +1,5 @@
 #include "QuarterHour.hpp"
-#include "ScheduleStatus.hpp"
+#include "BookedStatus.hpp"
 
 namespace Scheduler {
     namespace Core {
@@ -11,7 +11,7 @@ namespace Scheduler {
          */
         QuarterHour::QuarterHour() {
             // Set the booked status by default as not booked.
-            booked_status = ScheduleStatus::NotBooked;
+            booked_status = BookedStatus::NotBooked;
         }
 
         /*
@@ -27,10 +27,10 @@ namespace Scheduler {
          *  Summary: Obtain the booked status for this quarter hour.
          *
          *  Input: 
-         *  Output: ScheduleStatus if it has been booked or not.
+         *  Output: BookedStatus if it has been booked or not.
          * ---------------------------------------------------------------------------------------- 
          */
-        ScheduleStatus QuarterHour::getBookedStatus() const {
+        BookedStatus QuarterHour::getBookedStatus() const {
             return booked_status;
         }
 
@@ -39,11 +39,11 @@ namespace Scheduler {
          * setBookedStatus
          *  Summary: Set the booked status for this quarter hour.
          *
-         *  Input: ScheduleStatus if it is to be booked or not
+         *  Input: BookedStatus if it is to be booked or not
          *  Output: 
          * ---------------------------------------------------------------------------------------- 
          */
-        void QuarterHour::setBookedStatus(ScheduleStatus status) {
+        void QuarterHour::setBookedStatus(BookedStatus status) {
             booked_status = status;
         }
 
@@ -57,7 +57,7 @@ namespace Scheduler {
          * ---------------------------------------------------------------------------------------- 
          */
         void QuarterHour::setAsBooked() {
-            QuarterHour::setBookedStatus(ScheduleStatus::Booked);
+            QuarterHour::setBookedStatus(BookedStatus::Booked);
         }
 
         /*
@@ -70,7 +70,7 @@ namespace Scheduler {
          * ---------------------------------------------------------------------------------------- 
          */
         void QuarterHour::setAsNotBooked() {
-            QuarterHour::setBookedStatus(ScheduleStatus::NotBooked);
+            QuarterHour::setBookedStatus(BookedStatus::NotBooked);
         }
     }
 }

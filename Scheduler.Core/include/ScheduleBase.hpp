@@ -6,7 +6,8 @@
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * Schedule Base for different Schedule Types (AvailabilitySchedule, WorkSchedule, etc.)
+ * Schedule Base
+ *  Summary: N days worth of booked and not booked time.
  * ---------------------------------------------------------------------------------------------------- 
  */
 namespace Scheduler {
@@ -19,7 +20,7 @@ namespace Scheduler {
              * ScheduleBase Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleBase();
+            ScheduleBase(int n_days);
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -33,14 +34,21 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleStatus getSubmissionStatus() const;
+            ScheduleStatus GetSubmissionStatus() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Set Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            void setSubmissionStatus(ScheduleStatus status);
+            void SetSubmissionStatus(ScheduleStatus status);
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Book Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            //ScheduleStatus BookQuarterHour()
 
         private:
             /*
@@ -48,7 +56,7 @@ namespace Scheduler {
              * 
              * ---------------------------------------------------------------------------------------- 
              */
-            Day days[7];
+            Day* days;
 
             /*
              * ---------------------------------------------------------------------------------------- 

@@ -1,7 +1,7 @@
 #ifndef QUARTERHOUR_H
 #define QUARTERHOUR_H
 
-#include "ScheduleStatus.hpp"
+#include "BookedStatus.hpp"
 
 namespace Scheduler {
     namespace Core {
@@ -27,19 +27,19 @@ namespace Scheduler {
              * Get methods
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleStatus getBookedStatus() const;
+            BookedStatus getBookedStatus() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Set methods
              * ---------------------------------------------------------------------------------------- 
              */
-            void setBookedStatus(ScheduleStatus status);
+            void setBookedStatus(BookedStatus status);
             void setAsBooked();
             void setAsNotBooked();
 
         private:
-            ScheduleStatus booked_status;
+            BookedStatus booked_status;
         };
     }
 }

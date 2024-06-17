@@ -1,60 +1,57 @@
-#ifndef HOUR_H
-#define HOUR_H
+#ifndef WEEK_H
+#define WEEK_H
 
-#include "QuarterHour.hpp"
-#include <vector>
+#include "Day.hpp"
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * Hour 
- *  Summary: Collection of four quarter hours.
+ * Week
+ *  Summary: Collection of 7 consecutive days.
  * ---------------------------------------------------------------------------------------------------- 
  */
-
 namespace Scheduler {
     namespace Core {
 
-        class Hour {
+        class Week {
         public:
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Variables
+             * Week Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour quarter_hours[4];
+            Week();
+            Week(const Day& first_day_of_the_week);
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Hour Constructor
+             * Week Deconstructor
              * ---------------------------------------------------------------------------------------- 
              */
-            Hour();
+            ~Week();
 
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * Hour Deconstructor
-             * ---------------------------------------------------------------------------------------- 
-             */
-            ~Hour();
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour GetQuarterHour(int nth_quarter_hour);
-            std::vector<QuarterHour> GetAllQuarterHours();
-            std::vector<QuarterHour> GetRangeOfQuarterHours(int n_quarter_hours, int nth_quarter_hour);
+            Day* GetDays() const;
+            Day GetFirstDay() const;
+            Day GetLastDay() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Set Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            void SetDays(const Day& first_day_of_the_week);
 
         private:
+            Day first_day;
+            Day last_day;
+            Day days[7];
         };
     }
 }
 
-#endif // HOUR_H
+#endif // WEEK_H

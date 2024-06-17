@@ -1,50 +1,43 @@
-#ifndef HOUR_H
-#define HOUR_H
+#ifndef AVAILABILITYSCHEDULE_H
+#define AVAILABILITYSCHEDULE_H
 
-#include "QuarterHour.hpp"
-#include <vector>
+#include "ScheduleBase.hpp"
+#include "ScheduleStatus.hpp"
+#include "Day.hpp"
+#include "Week.hpp"
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
- * Hour 
- *  Summary: Collection of four quarter hours.
+ * AvailabilitySchedule
+ *  Summary: Schedule for time available on a per week basis.
  * ---------------------------------------------------------------------------------------------------- 
  */
 
 namespace Scheduler {
     namespace Core {
 
-        class Hour {
+        class AvailabilitySchedule : public ScheduleBase {
         public:
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Variables
+             * AvailabilitySchedule Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour quarter_hours[4];
+            AvailabilitySchedule(const Day& first_day_of_the_week);
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Hour Constructor
+             * AvailabilitySchedule Deconstructor
              * ---------------------------------------------------------------------------------------- 
              */
-            Hour();
-
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * Hour Deconstructor
-             * ---------------------------------------------------------------------------------------- 
-             */
-            ~Hour();
+            ~AvailabilitySchedule();
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour GetQuarterHour(int nth_quarter_hour);
-            std::vector<QuarterHour> GetAllQuarterHours();
-            std::vector<QuarterHour> GetRangeOfQuarterHours(int n_quarter_hours, int nth_quarter_hour);
+            Week GetWeek();
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -53,8 +46,9 @@ namespace Scheduler {
              */
 
         private:
+            Week week;
         };
     }
 }
 
-#endif // HOUR_H
+#endif // AVAILABILITYSCHEDULE_H

@@ -10,13 +10,9 @@ namespace Scheduler {
     namespace Core {
 
         enum class ScheduleStatus {
-            /*
-             * ---------------------------------------------------------------------------------------- 
-             * Time Booking Status
-             * ---------------------------------------------------------------------------------------- 
-             */
-            Booked,
-            NotBooked,
+            Scheduled,
+            AlreadyScheduled,
+            NotScheduled,
         };
     }
 }

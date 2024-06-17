@@ -51,9 +51,32 @@ namespace Scheduler {
         template <>
         std::string EnumHelper::toString(Scheduler::Core::ScheduleStatus status) {
             switch (status) {
-                case Scheduler::Core::ScheduleStatus::Booked:
+                case Scheduler::Core::ScheduleStatus::Scheduled:
+                    return "Scheduled";
+                case Scheduler::Core::ScheduleStatus::AlreadyScheduled:
+                    return "Already Scheduled";
+                case Scheduler::Core::ScheduleStatus::NotScheduled:
+                    return "Not Scheduled";
+                defualt:
+                    return "Unknown";
+            }
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * toString
+         *  Summary: Convert a BookedStatus enum to a string.
+         *
+         *  Input: The BookedStatus enum value.
+         *  Output: The string representing the BookedStatus enum.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        template <>
+        std::string EnumHelper::toString(Scheduler::Core::BookedStatus status) {
+            switch (status) {
+                case Scheduler::Core::BookedStatus::Booked:
                     return "Booked";
-                case Scheduler::Core::ScheduleStatus::NotBooked:
+                case Scheduler::Core::BookedStatus::NotBooked:
                     return "Not Booked";
                 defualt:
                     return "Unknown";
