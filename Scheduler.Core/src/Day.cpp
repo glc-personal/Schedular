@@ -52,6 +52,19 @@ namespace Scheduler {
 
         /*
          * ---------------------------------------------------------------------------------------- 
+         * GetParent
+         *  Summary: Get the pointer to the parent week.
+         *
+         *  Input: 
+         *  Output: Pointer to the parent week.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        Week* Day::GetParent() {
+            return parent;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
          * GetTm
          *  Summary: Get the C time structure.
          *
@@ -141,6 +154,19 @@ namespace Scheduler {
         std::string Day::GetDateAsString() const {
             return std::to_string(date.tm_mon) + "/" + std::to_string(date.tm_wday) 
                 + "/" + std::to_string(date.tm_year);
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetParent
+         *  Summary: Set the pointer to the parent week.
+         *
+         *  Input: Pointer to the parent week.
+         *  Output:
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void Day::SetParent(Week* week) {
+            parent = week;
         }
 
         /*

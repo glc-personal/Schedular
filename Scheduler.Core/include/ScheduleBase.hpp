@@ -55,7 +55,7 @@ namespace Scheduler {
              */
             //ScheduleStatus BookQuarterHour();
             ScheduleStatus BookHour(Hour& hour);
-            //ScheduleStatus BookRangeOfHours(int n_hours, int nth_hour, int nth_day);
+            //ScheduleStatus BookRangeOfHours(std::vector< std::reference_wrapper<Hour> > hours);
 
             /*
              * ---------------------------------------------------------------------------------------- 

@@ -36,6 +36,19 @@ namespace Scheduler {
 
         /*
          * ---------------------------------------------------------------------------------------- 
+         * GetParent
+         *  Summary: Get the parent hour for this quarter hour.
+         *
+         *  Input: Pointer to the parent hour
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        Hour* QuarterHour::GetParent() {
+            return parent;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
          * SetBookedStatus
          *  Summary: Set the booked status for this quarter hour.
          *
@@ -72,5 +85,19 @@ namespace Scheduler {
         void QuarterHour::SetAsNotBooked() {
             QuarterHour::SetBookedStatus(BookedStatus::NotBooked);
         }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetParent
+         *  Summary: Set the parent hour for this quarter hour.
+         *
+         *  Input: Pointer to the parent hour
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void QuarterHour::SetParent(Hour* hour) {
+            parent = hour;
+        }
+
     }
 }

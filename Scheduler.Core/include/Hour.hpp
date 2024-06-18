@@ -15,6 +15,8 @@
 namespace Scheduler {
     namespace Core {
 
+        class Day;
+
         class Hour {
         public:
             /*
@@ -43,6 +45,7 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            Day* GetParent();
             QuarterHour& GetQuarterHour(int nth_quarter_hour);
             std::vector< std::reference_wrapper<QuarterHour> > GetAllQuarterHours();
             std::vector< std::reference_wrapper<QuarterHour> > GetRangeOfQuarterHours(int n_quarter_hours, int nth_quarter_hour);
@@ -52,8 +55,10 @@ namespace Scheduler {
              * Set Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            void SetParent(Day* day);
 
         private:
+            Day* parent;
         };
     }
 }

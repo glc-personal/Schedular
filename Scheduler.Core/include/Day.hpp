@@ -18,6 +18,8 @@
 namespace Scheduler {
     namespace Core {
 
+        class Week;
+
         class Day {
         public:
             std::string name; 
@@ -43,12 +45,21 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            Week* GetParent();
             std::tm GetTm();
             Hour& GetHour(int nth_hour);
             std::vector< std::reference_wrapper<Hour> > GetAllHours();
             std::vector< std::reference_wrapper<Hour> > GetRangeOfHours(int n_hours, int nth_hour);
             std::string GetDayOfTheWeek() const;
             std::string GetDateAsString() const;
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Set Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            void SetParent(Week* week);
+ 
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -60,6 +71,7 @@ namespace Scheduler {
 
         private:
             std::tm date;
+            Week* parent;
         };
     }
 }

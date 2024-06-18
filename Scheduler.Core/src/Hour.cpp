@@ -32,6 +32,19 @@ namespace Scheduler {
 
         /*
          * ---------------------------------------------------------------------------------------- 
+         * GetParent
+         *  Summary: Get the parent day.
+         *
+         *  Input: 
+         *  Output: Pointer to the parent day.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        Day* Hour::GetParent() {
+            return parent;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
          * GetQuarterHour
          *  Summary: Get the nth quarter hour.
          * 
@@ -81,6 +94,19 @@ namespace Scheduler {
                 range.push_back(std::ref(quarter_hours[i+nth_quarter_hour-1]));
             }
             return range;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetParent
+         *  Summary: Set the parent day.
+         *
+         *  Input: Pointer to the parent day.
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void Hour::SetParent(Day* day) {
+            parent = day;
         }
 
     }

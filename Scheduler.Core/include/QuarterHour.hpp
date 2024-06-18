@@ -6,6 +6,8 @@
 namespace Scheduler {
     namespace Core {
 
+        class Hour;
+
         class QuarterHour {
         public:
             /*
@@ -28,6 +30,7 @@ namespace Scheduler {
              * ---------------------------------------------------------------------------------------- 
              */
             BookedStatus GetBookedStatus() const;
+            Hour* GetParent();
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -37,9 +40,11 @@ namespace Scheduler {
             void SetBookedStatus(BookedStatus status);
             void SetAsBooked();
             void SetAsNotBooked();
+            void SetParent(Hour* hour);
 
         private:
             BookedStatus booked_status;
+            Hour* parent;
         };
     }
 }
