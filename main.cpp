@@ -2,7 +2,10 @@
 #include "Employee.hpp"
 #include "UserStatus.hpp"
 #include "EnumHelper.hpp"
+#include "ScheduleBase.hpp"
+#include "Day.hpp"
 #include <iostream>
+#include <vector>
 
 int main() 
 {
@@ -15,6 +18,16 @@ int main()
 
     // Add the employee
     manager->addEmployee(*employee);
+
+    // Setup a Schedule and book an hour.
+    Scheduler::Core::Day today(6, 18, 2024);
+    Scheduler::Core::ScheduleBase schedule(7, today);
+    Scheduler::Core::Day& d = schedule.GetDay(1);
+    Scheduler::Core::Hour& h = schedule.GetHourFromDay(1, d);
+    schedule.BookHour(h);
+    schedule.PrintAsString();
+
+    //delete schedule;
     delete employee;
 
     // Create a new emplyee
@@ -27,7 +40,7 @@ int main()
     // Show the manager's employees
     std::cout << "Manager: " << manager->getName() << std::endl;
     for (const Scheduler::Core::Employee& _ : manager->getEmployees()) {
-        std::cout << "\t" << _.getName() << ": " << Scheduler::Utilities::EnumHelper::toString(_.getLoggedInStatus()) << std::endl;
+        std::cout << "\t" << _.getName() << ": " << Scheduler::Utilities::EnumHelper::ToString(_.getLoggedInStatus()) << std::endl;
     }
 
     // Remove an employee

@@ -27,16 +27,16 @@ namespace Scheduler {
              * Get methods
              * ---------------------------------------------------------------------------------------- 
              */
-            BookedStatus getBookedStatus() const;
+            BookedStatus GetBookedStatus() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Set methods
              * ---------------------------------------------------------------------------------------- 
              */
-            void setBookedStatus(BookedStatus status);
-            void setAsBooked();
-            void setAsNotBooked();
+            void SetBookedStatus(BookedStatus status);
+            void SetAsBooked();
+            void SetAsNotBooked();
 
         private:
             BookedStatus booked_status;

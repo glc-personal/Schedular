@@ -22,7 +22,7 @@ namespace Scheduler {
              * ----------------------------------------------------------------------------------------
              */
             template<typename T>
-            static std::string toString(T enumValue);
+            static std::string ToString(T enumValue);
         private:
         };
 
@@ -32,13 +32,13 @@ namespace Scheduler {
          * --------------------------------------------------------------------------------------------
          */
         template <>
-        std::string EnumHelper::toString(Scheduler::Core::UserStatus status);
+        std::string EnumHelper::ToString(Scheduler::Core::UserStatus status);
 
         template <>
-        std::string EnumHelper::toString(Scheduler::Core::ScheduleStatus status);
+        std::string EnumHelper::ToString(Scheduler::Core::ScheduleStatus status);
 
         template <>
-        std::string EnumHelper::toString(Scheduler::Core::BookedStatus status);
+        std::string EnumHelper::ToString(Scheduler::Core::BookedStatus status);
     }
 }
 

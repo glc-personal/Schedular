@@ -15,7 +15,8 @@ namespace Scheduler {
          * AvailabilitySchedule Constructor
          * ---------------------------------------------------------------------------------------- 
          */
-        AvailabilitySchedule::AvailabilitySchedule(const Day& first_day_of_the_week) : ScheduleBase(7) {
+        AvailabilitySchedule::AvailabilitySchedule(const Day& first_day_of_the_week) 
+            : ScheduleBase(7, first_day_of_the_week) {
             week = Week(first_day_of_the_week);
         }
 

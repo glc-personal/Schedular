@@ -1,4 +1,5 @@
 #include "Hour.hpp"
+#include <iostream>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -18,7 +19,7 @@ namespace Scheduler {
         Hour::Hour() {
             // Initialize the four quarter hours.
             for (int i = 0; i < 4; i++) {
-                quarter_hours[i] = QuarterHour();
+                quarter_hours.push_back(QuarterHour());
             }
         }
 
@@ -38,7 +39,7 @@ namespace Scheduler {
          *  Output: The nth Quarter Hour.
          * ---------------------------------------------------------------------------------------- 
          */
-        QuarterHour Hour::GetQuarterHour(int nth_quarter_hour) {
+        QuarterHour& Hour::GetQuarterHour(int nth_quarter_hour) {
             return quarter_hours[nth_quarter_hour-1];
         }
 
@@ -51,11 +52,10 @@ namespace Scheduler {
          *  Output: All Quarter Hours.
          * ---------------------------------------------------------------------------------------- 
          */
-        std::vector<QuarterHour> Hour::GetAllQuarterHours() {
-            std::vector<QuarterHour> all;
-            all.reserve(4);
+        std::vector< std::reference_wrapper<QuarterHour> > Hour::GetAllQuarterHours() {
+            std::vector< std::reference_wrapper<QuarterHour> > all;
             for (int i = 0; i < 4; i++) {
-                all[i] = quarter_hours[i];
+                all.push_back(std::ref(quarter_hours[i]));
             }
             return all;
         }
@@ -69,18 +69,19 @@ namespace Scheduler {
          *  Output: N Quarter Hours from the nth Quarter Hour.
          * ---------------------------------------------------------------------------------------- 
          */
-        std::vector<QuarterHour> Hour::GetRangeOfQuarterHours(int n_quarter_hours, 
+        std::vector< std::reference_wrapper<QuarterHour> > Hour::GetRangeOfQuarterHours(int n_quarter_hours, 
             int nth_quarter_hour) {
             // Clip the number of quarter hours returned if necessary.
             if (n_quarter_hours + nth_quarter_hour > 4) {
                 n_quarter_hours = 4 - nth_quarter_hour;
             }
-            std::vector<QuarterHour> range;
+            std::vector< std::reference_wrapper<QuarterHour> > range;
             range.reserve(n_quarter_hours);
             for (int i = 0; i < n_quarter_hours; i++) {
-                range[i] = quarter_hours[i+nth_quarter_hour-1];
+                range.push_back(std::ref(quarter_hours[i+nth_quarter_hour-1]));
             }
             return range;
         }
+
     }
 }

@@ -6,6 +6,7 @@
 #include <string>
 #include <ctime>
 #include <vector>
+#include <functional>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -20,7 +21,7 @@ namespace Scheduler {
         class Day {
         public:
             std::string name; 
-            Hour hours[24];
+            std::vector<Hour> hours;
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -42,9 +43,12 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            Hour GetHour(int nth_hour);
-            std::vector<Hour> GetAllHours();
-            std::vector<Hour> GetRangeOfHours(int n_hours, int nth_hour);
+            std::tm GetTm();
+            Hour& GetHour(int nth_hour);
+            std::vector< std::reference_wrapper<Hour> > GetAllHours();
+            std::vector< std::reference_wrapper<Hour> > GetRangeOfHours(int n_hours, int nth_hour);
+            std::string GetDayOfTheWeek() const;
+            std::string GetDateAsString() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 

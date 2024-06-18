@@ -16,12 +16,25 @@ namespace Scheduler {
          * Day Constructors
          * ---------------------------------------------------------------------------------------- 
          */
-        Day::Day() {}
+        Day::Day() {
+            for (int i = 0; i < 24; i++) {
+                hours.push_back(Hour());
+            }
+        }
         Day::Day(const int month, const int day, const int year) {
+            for (int i = 0; i < 24; i++) {
+                hours.push_back(Hour());
+            }
             // Initialize the date for this day.
             date.tm_mon = month - 1;
             date.tm_mday = day;
             date.tm_year = year - 1900;
+            date.tm_hour = 0;
+            date.tm_min = 0;
+            date.tm_sec = 0;
+            date.tm_isdst = -1;
+            // Normalize the date.
+            std::mktime(&date);
             // Get the day of the week.
             name = Scheduler::Utilities::TmToDayOfTheWeek(date);
             // Initialize the 24 hours.
@@ -39,6 +52,19 @@ namespace Scheduler {
 
         /*
          * ---------------------------------------------------------------------------------------- 
+         * GetTm
+         *  Summary: Get the C time structure.
+         *
+         *  Input:
+         *  Output: The tm struct.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        std::tm Day::GetTm() {
+            return date;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
          * GetHour
          *  Summary: Get the Hour.
          *
@@ -46,7 +72,7 @@ namespace Scheduler {
          *  Output: The nth hour.
          * ---------------------------------------------------------------------------------------- 
          */
-        Hour Day::GetHour(int nth_hour) {
+        Hour& Day::GetHour(int nth_hour) {
             return hours[nth_hour-1];
         }
 
@@ -59,11 +85,11 @@ namespace Scheduler {
          *  Output: All hours in the day.
          * ---------------------------------------------------------------------------------------- 
          */
-        std::vector<Hour> Day::GetAllHours() {
-            std::vector<Hour> all;
+        std::vector< std::reference_wrapper<Hour> > Day::GetAllHours() {
+            std::vector< std::reference_wrapper<Hour> > all;
             all.reserve(24);
             for (int i = 0; i < 24; i++) {
-                all[i] = hours[i];
+                all.push_back(std::ref(hours[i]));
             }
             return all;
         }
@@ -77,17 +103,44 @@ namespace Scheduler {
          *  Output: N hours from the day.
          * ---------------------------------------------------------------------------------------- 
          */
-        std::vector<Hour> Day::GetRangeOfHours(int n_hours, int nth_hour) {
+        std::vector< std::reference_wrapper<Hour> > Day::GetRangeOfHours(int n_hours, int nth_hour) {
             // Clip the number of hours if necessary. 
             if (n_hours + nth_hour > 24) {
                 n_hours = 24 - nth_hour;
             }
-            std::vector<Hour> range;
+            std::vector< std::reference_wrapper<Hour> > range;
             range.reserve(n_hours);
             for (int i = 0; i < n_hours; i++) {
-                range[i] = hours[i+nth_hour-1];
+                range.push_back((hours[i+nth_hour-1]));
             }
             return range;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * GetDayOfTheWeek
+         *  Summary: Get the day of the week.
+         *
+         *  Input:
+         *  Output: Day of the week.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        std::string Day::GetDayOfTheWeek() const {
+            return name;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * GetDateAsString
+         *  Summary: Get the date as a formatted string.
+         *
+         *  Input:
+         *  Output: Date as a formatted string.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        std::string Day::GetDateAsString() const {
+            return std::to_string(date.tm_mon) + "/" + std::to_string(date.tm_wday) 
+                + "/" + std::to_string(date.tm_year);
         }
 
         /*
@@ -106,7 +159,7 @@ namespace Scheduler {
             time += n_days_since * 86400; 
             // Convert back to a tm struct.
             std::tm* new_date = std::localtime(&time);
-            Day day = Day(new_date->tm_mon, new_date->tm_mday, new_date->tm_year);
+            Day day = Day(new_date->tm_mon + 1*2, new_date->tm_mday, new_date->tm_year + 1900*2);
             return day;
         }
 

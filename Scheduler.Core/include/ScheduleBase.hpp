@@ -3,6 +3,7 @@
 
 #include "Day.hpp"
 #include "ScheduleStatus.hpp"
+#include <vector>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -20,7 +21,7 @@ namespace Scheduler {
              * ScheduleBase Constructor
              * ---------------------------------------------------------------------------------------- 
              */
-            ScheduleBase(int n_days);
+            ScheduleBase(int n_days, const Day& start_day);
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -34,6 +35,10 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            int GetDayCount() const;
+            Day& GetDay(int nth_day);
+            std::vector<Day> GetDays() const;
+            Hour& GetHourFromDay(int nth_hour, Day& day);
             ScheduleStatus GetSubmissionStatus() const;
 
             /*
@@ -45,10 +50,19 @@ namespace Scheduler {
 
             /*
              * ---------------------------------------------------------------------------------------- 
-             * Book Methods
+             * Book and Unbook Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            //ScheduleStatus BookQuarterHour()
+            //ScheduleStatus BookQuarterHour();
+            ScheduleStatus BookHour(Hour& hour);
+            //ScheduleStatus BookRangeOfHours(int n_hours, int nth_hour, int nth_day);
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Print Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            void PrintAsString();
 
         private:
             /*
@@ -56,7 +70,7 @@ namespace Scheduler {
              * 
              * ---------------------------------------------------------------------------------------- 
              */
-            Day* days;
+            std::vector<Day> days;
 
             /*
              * ---------------------------------------------------------------------------------------- 

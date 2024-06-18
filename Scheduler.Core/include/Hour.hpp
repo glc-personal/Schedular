@@ -3,6 +3,7 @@
 
 #include "QuarterHour.hpp"
 #include <vector>
+#include <functional>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -21,7 +22,7 @@ namespace Scheduler {
              * Variables
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour quarter_hours[4];
+            std::vector<QuarterHour> quarter_hours;
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -42,10 +43,10 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            QuarterHour GetQuarterHour(int nth_quarter_hour);
-            std::vector<QuarterHour> GetAllQuarterHours();
-            std::vector<QuarterHour> GetRangeOfQuarterHours(int n_quarter_hours, int nth_quarter_hour);
-
+            QuarterHour& GetQuarterHour(int nth_quarter_hour);
+            std::vector< std::reference_wrapper<QuarterHour> > GetAllQuarterHours();
+            std::vector< std::reference_wrapper<QuarterHour> > GetRangeOfQuarterHours(int n_quarter_hours, int nth_quarter_hour);
+ 
             /*
              * ---------------------------------------------------------------------------------------- 
              * Set Methods

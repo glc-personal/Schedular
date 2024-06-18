@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++17 -I./Scheduler.Core/include -I./Scheduler.Utilities/include
+CXXFLAGS = -std=c++2a -I./Scheduler.Core/include -I./Scheduler.Utilities/include
 
 # Directories
 CORE_DIR = ./Scheduler.Core
