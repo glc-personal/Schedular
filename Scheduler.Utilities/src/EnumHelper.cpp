@@ -82,5 +82,29 @@ namespace Scheduler {
                     return "Unknown";
             }
         }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * ToString
+         *  Summary: Convert a AvailabilityStatus enum to a string.
+         *
+         *  Input: The AvailabilityStatus enum value.
+         *  Output: The string representing the AvailabilityStatus enum.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        template <>
+        std::string EnumHelper::ToString(Scheduler::Core::AvailabilityStatus status) {
+            switch (status) {
+                case Scheduler::Core::AvailabilityStatus::Available:
+                    return "Available";
+                case Scheduler::Core::AvailabilityStatus::NotAvailable:
+                    return "Not Available";
+                case Scheduler::Core::AvailabilityStatus::PotentiallyAvailable:
+                    return "Potentially Available";
+                defualt:
+                    return "Unknown";
+            }
+        }
+
     }
 }

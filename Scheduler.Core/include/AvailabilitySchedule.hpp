@@ -3,6 +3,9 @@
 
 #include "ScheduleBase.hpp"
 #include "ScheduleStatus.hpp"
+#include "AvailabilityStatus.hpp"
+#include "QuarterHour.hpp"
+#include "Hour.hpp"
 #include "Day.hpp"
 #include "Week.hpp"
 
@@ -23,6 +26,7 @@ namespace Scheduler {
              * AvailabilitySchedule Constructor
              * ---------------------------------------------------------------------------------------- 
              */
+            AvailabilitySchedule();
             AvailabilitySchedule(const Day& first_day_of_the_week);
 
             /*
@@ -44,6 +48,21 @@ namespace Scheduler {
              * Set Methods
              * ---------------------------------------------------------------------------------------- 
              */
+            void SetFirstDay(const Day& day);
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Mark Availability Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            void MarkQuarterHourAvailability(QuarterHour& qh, AvailabilityStatus status);
+            void MarkQuarterHourAsAvailable(QuarterHour& qh);
+            void MarkQuarterHourAsNotAvailable(QuarterHour& qh);
+            void MarkQuarterHourAsPotentiallyAvailable(QuarterHour& qh);
+            void MarkHourAvailability(Hour& hour, AvailabilityStatus status);
+            void MarkHourAsAvailable(Hour& hour);
+            void MarkHourAsNotAvailable(Hour& hour);
+            void MarkHourAsPotentiallyAvailable(Hour& hour);
 
         private:
             Week week;

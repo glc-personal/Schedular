@@ -1,5 +1,4 @@
 #include "QuarterHour.hpp"
-#include "BookedStatus.hpp"
 
 namespace Scheduler {
     namespace Core {
@@ -84,6 +83,59 @@ namespace Scheduler {
          */
         void QuarterHour::SetAsNotBooked() {
             QuarterHour::SetBookedStatus(BookedStatus::NotBooked);
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetAvailabilityStatus
+         *  Summary: Set the AvailabilityStatus for this quarter hour.
+         *
+         *  Input: AvailabilityStatus if it is to be available, not available, or potentially 
+         *      available.
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void QuarterHour::SetAvailabilityStatus(AvailabilityStatus status) {
+            availability_status = status;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetAsAvailability
+         *  Summary: Set the AvailabilityStatus for this quarter hour as Available.
+         *
+         *  Input:
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void QuarterHour::SetAsAvailable() {
+            availability_status = AvailabilityStatus::Available;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetAsNotAvailable
+         *  Summary: Set the AvailabilityStatus for this quarter hour as NotAvailable.
+         *
+         *  Input:
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void QuarterHour::SetAsNotAvailable() {
+            availability_status = AvailabilityStatus::NotAvailable;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * SetAsPotentiallyAvailable
+         *  Summary: Set the AvailabilityStatus for this quarter hour as PotentiallyAvailable.
+         *
+         *  Input:
+         *  Output: 
+         * ---------------------------------------------------------------------------------------- 
+         */
+        void QuarterHour::SetAsPotentiallyAvailable() {
+            availability_status = AvailabilityStatus::PotentiallyAvailable;
         }
 
         /*

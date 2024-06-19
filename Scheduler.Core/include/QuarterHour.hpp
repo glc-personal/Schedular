@@ -2,6 +2,7 @@
 #define QUARTERHOUR_H
 
 #include "BookedStatus.hpp"
+#include "AvailabilityStatus.hpp"
 
 namespace Scheduler {
     namespace Core {
@@ -40,10 +41,16 @@ namespace Scheduler {
             void SetBookedStatus(BookedStatus status);
             void SetAsBooked();
             void SetAsNotBooked();
+            void SetAvailabilityStatus(AvailabilityStatus status);
+            void SetAsAvailable();
+            void SetAsNotAvailable();
+            void SetAsPotentiallyAvailable();
             void SetParent(Hour* hour);
+            
 
         private:
             BookedStatus booked_status;
+            AvailabilityStatus availability_status;
             Hour* parent;
         };
     }

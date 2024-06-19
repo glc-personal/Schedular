@@ -4,6 +4,7 @@
 #include "UserStatus.hpp"
 #include "ScheduleStatus.hpp"
 #include "BookedStatus.hpp"
+#include "AvailabilityStatus.hpp"
 #include <string>
 
 /*
@@ -39,6 +40,9 @@ namespace Scheduler {
 
         template <>
         std::string EnumHelper::ToString(Scheduler::Core::BookedStatus status);
+
+        template<>
+        std::string EnumHelper::ToString(Scheduler::Core::AvailabilityStatus status);
     }
 }
 

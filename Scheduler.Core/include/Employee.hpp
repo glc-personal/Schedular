@@ -2,6 +2,7 @@
 #define EMPLOYEE_H
 
 #include "UserBase.hpp"
+#include "AvailabilitySchedule.hpp"
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -29,8 +30,22 @@ namespace Scheduler {
              */
             ~Employee();
 
-        
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Get Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            AvailabilitySchedule GetAvailabilitySchedule() const;
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Set Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            void SetAvailabilitySchedule(AvailabilitySchedule& schedule);
+
         private:
+            AvailabilitySchedule availability_schedule;
         };
     }
 }

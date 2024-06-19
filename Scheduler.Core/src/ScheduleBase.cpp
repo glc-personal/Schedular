@@ -12,6 +12,7 @@ namespace Scheduler {
          * ScheduleBase Constructor
          * ----------------------------------------------------------------------------------------
          */
+        ScheduleBase::ScheduleBase() {}
         ScheduleBase::ScheduleBase(int n_days, const Day& start_day) {
             // Initialize the days of the week.
             days.push_back(start_day);

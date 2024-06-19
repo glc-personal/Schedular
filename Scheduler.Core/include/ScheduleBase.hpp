@@ -22,6 +22,7 @@ namespace Scheduler {
              * ScheduleBase Constructor
              * ---------------------------------------------------------------------------------------- 
              */
+            ScheduleBase();
             ScheduleBase(int n_days, const Day& start_day);
 
             /*
