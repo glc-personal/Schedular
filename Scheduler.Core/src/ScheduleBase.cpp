@@ -62,8 +62,13 @@ namespace Scheduler {
          *  Output: Days in the schedule.
          * ----------------------------------------------------------------------------------------
          */
-        std::vector<Day> ScheduleBase::GetDays() const {
-            return days;
+        std::vector< std::reference_wrapper<Day> > ScheduleBase::GetDays() {
+            std::vector< std::reference_wrapper<Day> > days_reference;
+            days_reference.reserve(days.size());
+            for (int i = 0; i < days.size(); i++) {
+                days_reference[i] = days[i];
+            }
+            return days_reference;
         }
 
         /*
@@ -77,6 +82,23 @@ namespace Scheduler {
          */
         Hour& ScheduleBase::GetHourFromDay(int nth_hour, Day& day) {
             return day.GetHour(nth_hour);
+        }
+
+        /*
+         * ----------------------------------------------------------------------------------------
+         * GetHoursFromDay
+         *  Summary: Obtain references to the hours in the schedule from a day.
+         *
+         *  Input:
+         *  Output: Reference to all the hours in the schedule from a day.
+         * ----------------------------------------------------------------------------------------
+         */
+        std::vector< std::reference_wrapper<Hour> > ScheduleBase::GetHoursFromDay(Day& day) {
+            std::vector< std::reference_wrapper<Hour> > hours;
+            for (int i = 0; i < 24; i++) {
+                hours.push_back(day.GetHour(i+1));
+            }
+            return hours;
         }
 
         /*
@@ -162,7 +184,6 @@ namespace Scheduler {
                         }
                     }
                 }
-            break;
             }
 
         }

@@ -6,6 +6,7 @@
 #include "Day.hpp"
 #include <iostream>
 #include <vector>
+#include <functional>
 
 int main() 
 {
@@ -22,9 +23,11 @@ int main()
     // Setup a Schedule and book an hour.
     Scheduler::Core::Day today(6, 18, 2024);
     Scheduler::Core::ScheduleBase schedule(7, today);
-    Scheduler::Core::Day& d = schedule.GetDay(1);
-    Scheduler::Core::Hour& h = schedule.GetHourFromDay(1, d);
-    schedule.BookHour(h);
+    std::vector< std::reference_wrapper<Scheduler::Core::Day> > days = schedule.GetDays();
+    Scheduler::Core::Day& day = days[0].get();
+    std::vector< std::reference_wrapper<Scheduler::Core::Hour> > hours = schedule.GetHoursFromDay(day);
+    Scheduler::Core::Hour& hour = hours[0].get();
+    schedule.BookHour(hour);
     schedule.PrintAsString();
 
     //delete schedule;

@@ -4,6 +4,7 @@
 #include "Day.hpp"
 #include "ScheduleStatus.hpp"
 #include <vector>
+#include <functional>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -37,8 +38,9 @@ namespace Scheduler {
              */
             int GetDayCount() const;
             Day& GetDay(int nth_day);
-            std::vector<Day> GetDays() const;
+            std::vector< std::reference_wrapper<Day> > GetDays();
             Hour& GetHourFromDay(int nth_hour, Day& day);
+            std::vector< std::reference_wrapper<Hour> > GetHoursFromDay(Day& day);
             ScheduleStatus GetSubmissionStatus() const;
 
             /*
