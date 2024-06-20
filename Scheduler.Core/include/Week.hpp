@@ -2,6 +2,8 @@
 #define WEEK_H
 
 #include "Day.hpp"
+#include <vector>
+#include <functional>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -35,7 +37,8 @@ namespace Scheduler {
              * Get Methods
              * ---------------------------------------------------------------------------------------- 
              */
-            Day* GetDays() const;
+            std::vector< std::reference_wrapper<Day> > GetDays();
+            std::vector<Day> GetDaysCopy() const;
             Day GetFirstDay() const;
             Day GetLastDay() const;
 
@@ -49,7 +52,7 @@ namespace Scheduler {
         private:
             Day first_day;
             Day last_day;
-            Day days[7];
+            std::vector<Day> days;
         };
     }
 }

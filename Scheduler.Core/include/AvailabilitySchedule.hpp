@@ -64,6 +64,13 @@ namespace Scheduler {
             void MarkHourAsNotAvailable(Hour& hour);
             void MarkHourAsPotentiallyAvailable(Hour& hour);
 
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Print Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            void PrintAsString();
+
         private:
             Week week;
         };

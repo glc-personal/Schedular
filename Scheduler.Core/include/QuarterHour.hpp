@@ -31,6 +31,7 @@ namespace Scheduler {
              * ---------------------------------------------------------------------------------------- 
              */
             BookedStatus GetBookedStatus() const;
+            AvailabilityStatus GetAvailabilityStatus() const;
             Hour* GetParent();
 
             /*

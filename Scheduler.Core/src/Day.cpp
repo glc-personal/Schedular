@@ -1,5 +1,6 @@
 #include "Day.hpp"
 #include "TmToDayOfTheWeek.hpp"
+#include <iostream>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -37,10 +38,6 @@ namespace Scheduler {
             std::mktime(&date);
             // Get the day of the week.
             name = Scheduler::Utilities::TmToDayOfTheWeek(date);
-            // Initialize the 24 hours.
-            for (int i = 0; i < 24; i++) {
-                hours[i] = Hour();
-            }
         }
 
         /*
@@ -152,8 +149,8 @@ namespace Scheduler {
          * ---------------------------------------------------------------------------------------- 
          */
         std::string Day::GetDateAsString() const {
-            return std::to_string(date.tm_mon) + "/" + std::to_string(date.tm_wday) 
-                + "/" + std::to_string(date.tm_year);
+            return std::to_string(date.tm_mon+1) + "/" + std::to_string(date.tm_mday) 
+                + "/" + std::to_string(date.tm_year+1900);
         }
 
         /*
@@ -180,12 +177,13 @@ namespace Scheduler {
          */
         Day Day::operator+(const int n_days_since) {
             // Convert to unix time (tm -> time_t).
-            std::time_t time = std::mktime(&date);
+            std::time_t time = std::mktime(const_cast<std::tm*>(&date));
             // Add the extra time (n_days_since * 86400 seconds). There are 86400 seconds in a day.
             time += n_days_since * 86400; 
             // Convert back to a tm struct.
             std::tm* new_date = std::localtime(&time);
-            Day day = Day(new_date->tm_mon + 1*2, new_date->tm_mday, new_date->tm_year + 1900*2);
+            //Day day = Day(new_date->tm_mon + 1*2, new_date->tm_mday, new_date->tm_year + 1900*2);
+            Day day = Day(new_date->tm_mon+1, new_date->tm_mday, new_date->tm_year + 1900);
             return day;
         }
 

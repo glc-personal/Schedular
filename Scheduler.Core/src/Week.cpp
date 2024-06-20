@@ -1,4 +1,5 @@
 #include "Week.hpp"
+#include <iostream>
 
 /*
  * ---------------------------------------------------------------------------------------------------- 
@@ -35,12 +36,26 @@ namespace Scheduler {
          *   Output: Days of the Week
          * ---------------------------------------------------------------------------------------- 
          */
-        Day* Week::GetDays() const {
-            static Day week_days[7];
+        std::vector< std::reference_wrapper<Day> > Week::GetDays() {
+            std::vector< std::reference_wrapper<Day> > week_days;
+            week_days.reserve(7);
             for (int i = 0; i < 7; i++) {
-                week_days[i] = days[i];
+                week_days.push_back(std::ref(days[i]));
             }
             return week_days;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         *  GetDaysCopy
+         *   Summary: Get the days of the week as a copy.
+         *
+         *   Input:
+         *   Output: Days of the Week as a copy
+         * ---------------------------------------------------------------------------------------- 
+         */
+        std::vector<Day> Week::GetDaysCopy() const {
+            return days;
         }
 
         /*
@@ -80,10 +95,10 @@ namespace Scheduler {
          */
         void Week::SetDays(const Day& first_day_of_the_week) {
             first_day = first_day_of_the_week;
-            days[0] = first_day;
+            days.push_back(first_day);
             // Initialize the Week.
             for (int i = 1; i < 7; i++) {
-                days[i] = first_day + i;
+                days.push_back(first_day + i);
             }
             last_day = days[6];
         }

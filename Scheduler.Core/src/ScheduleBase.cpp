@@ -155,38 +155,5 @@ namespace Scheduler {
          * ----------------------------------------------------------------------------------------
          */
 
-        /*
-         * ----------------------------------------------------------------------------------------
-         * PrintAsString
-         *  Summary: Print the Schedule as a string.
-         *
-         *  Input: 
-         *  Output: 
-         * ----------------------------------------------------------------------------------------
-         */
-        void ScheduleBase::PrintAsString() {
-            for (Day& day : days) {
-                std::cout << "Day: "<< day.GetDayOfTheWeek() << " ("
-                    << day.GetDateAsString() << ")" << std::endl;
-                std::vector< std::reference_wrapper<Hour> > hours = day.GetAllHours();
-                for (int i = 0; i < 24; i++) {
-                    std::cout << "\tHour: " << std::to_string(i) << ":00:00" << std::endl;
-                    int j = 0;
-                    for (QuarterHour& qh : hours[i].get().GetAllQuarterHours()) {
-                        std::cout << "\t\t" << std::to_string(i) << ":" 
-                            << std::to_string(j * 15) << ":00" << " - " << std::to_string(i) 
-                            << ":" << std::to_string((j+1) * 15) << ":00";
-                        j++;
-                        if (qh.GetBookedStatus() == BookedStatus::Booked) {
-                            std::cout << " - ||||||||||||||||||||||||||||||||||||||| - Booked\n";
-                        }
-                        else {
-                            std::cout << " -                                         - Not Booked\n";
-                        }
-                    }
-                }
-            }
-
-        }
     }
 }

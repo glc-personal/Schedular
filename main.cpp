@@ -34,10 +34,15 @@ int main()
     // Setup an AvailabilitySchedule for an employee.
     Scheduler::Core::AvailabilitySchedule schedule(today);
     std::vector< std::reference_wrapper<Scheduler::Core::Day> > days = schedule.GetDays();
-    Scheduler::Core::QuarterHour& qh = days[0].get().GetAllHours()[0].get().GetQuarterHour(1);
+    Scheduler::Core::Day& day = days[0].get();
+    std::vector< std::reference_wrapper<Scheduler::Core::Hour> > hours = day.GetAllHours();
+    Scheduler::Core::Hour& hour = hours[0].get();
+    std::vector< std::reference_wrapper<Scheduler::Core::QuarterHour> > qhs = hour.GetAllQuarterHours();
+    Scheduler::Core::QuarterHour& qh = qhs[0];
+    std::cout << Scheduler::Utilities::EnumHelper::ToString(qh.GetAvailabilityStatus()) << std::endl;
     schedule.MarkQuarterHourAsAvailable(qh);
-    
-    //as.PrintAsString();
+    std::cout << Scheduler::Utilities::EnumHelper::ToString(qh.GetAvailabilityStatus()) << std::endl;
+    schedule.PrintAsString();
 
     //delete schedule;
     delete employee;

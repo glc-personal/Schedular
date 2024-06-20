@@ -11,6 +11,7 @@ namespace Scheduler {
         QuarterHour::QuarterHour() {
             // Set the booked status by default as not booked.
             booked_status = BookedStatus::NotBooked;
+            availability_status = AvailabilityStatus::NotAvailable;
         }
 
         /*
@@ -31,6 +32,19 @@ namespace Scheduler {
          */
         BookedStatus QuarterHour::GetBookedStatus() const {
             return booked_status;
+        }
+
+        /*
+         * ---------------------------------------------------------------------------------------- 
+         * GetAvailabilityStatus
+         *  Summary: Obtain the availability status for this quarter hour.
+         *
+         *  Input: 
+         *  Output: AvailabilityStatus for the QuarterHour.
+         * ---------------------------------------------------------------------------------------- 
+         */
+        AvailabilityStatus QuarterHour::GetAvailabilityStatus() const {
+            return availability_status;
         }
 
         /*
