@@ -21,27 +21,18 @@ int main()
     // Add the employee
     manager->addEmployee(*employee);
 
-    // Setup a Schedule and book an hour.
-    Scheduler::Core::Day today(6, 19, 2024);
-    //Scheduler::Core::ScheduleBase schedule(7, today);
-    //std::vector< std::reference_wrapper<Scheduler::Core::Day> > days = schedule.GetDays();
-    //Scheduler::Core::Day& day = days[0].get();
-    //std::vector< std::reference_wrapper<Scheduler::Core::Hour> > hours = schedule.GetHoursFromDay(day);
-    //Scheduler::Core::Hour& hour = hours[0].get();
-    //schedule.BookHour(hour);
-    //schedule.PrintAsString();
-
     // Setup an AvailabilitySchedule for an employee.
+    Scheduler::Core::Day today(6, 19, 2024);
     Scheduler::Core::AvailabilitySchedule schedule(today);
+    employee->SetAvailabilitySchedule(schedule);
     std::vector< std::reference_wrapper<Scheduler::Core::Day> > days = schedule.GetDays();
     Scheduler::Core::Day& day = days[0].get();
     std::vector< std::reference_wrapper<Scheduler::Core::Hour> > hours = day.GetAllHours();
     Scheduler::Core::Hour& hour = hours[0].get();
     std::vector< std::reference_wrapper<Scheduler::Core::QuarterHour> > qhs = hour.GetAllQuarterHours();
     Scheduler::Core::QuarterHour& qh = qhs[0];
-    std::cout << Scheduler::Utilities::EnumHelper::ToString(qh.GetAvailabilityStatus()) << std::endl;
     schedule.MarkQuarterHourAsAvailable(qh);
-    std::cout << Scheduler::Utilities::EnumHelper::ToString(qh.GetAvailabilityStatus()) << std::endl;
+    employee->SetAvailabilitySchedule(schedule);
     schedule.PrintAsString();
 
     //delete schedule;

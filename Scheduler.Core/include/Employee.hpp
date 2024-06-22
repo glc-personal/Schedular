@@ -36,6 +36,7 @@ namespace Scheduler {
              * ---------------------------------------------------------------------------------------- 
              */
             AvailabilitySchedule GetAvailabilitySchedule() const;
+            double GetPay() const;
 
             /*
              * ---------------------------------------------------------------------------------------- 
@@ -43,9 +44,26 @@ namespace Scheduler {
              * ---------------------------------------------------------------------------------------- 
              */
             void SetAvailabilitySchedule(AvailabilitySchedule& schedule);
+            void SetPay(double amount);
+            void SetInTraining(bool flag);
+            void SetCanTrainFront(bool flag);
+            void SetCanTrainBack(bool flag);
+
+            /*
+             * ---------------------------------------------------------------------------------------- 
+             * Check Methods
+             * ---------------------------------------------------------------------------------------- 
+             */
+            bool IsInTraining();
+            bool CanTrainFront();
+            bool CanTrainBack();
 
         private:
             AvailabilitySchedule availability_schedule;
+            double pay;
+            bool in_training;
+            bool can_train_front;
+            bool can_train_back;
         };
     }
 }
